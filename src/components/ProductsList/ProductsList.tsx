@@ -26,8 +26,8 @@ const ProductsList = (props: Props) => {
                         type,
                         capacity,
                         price,
-                    }: ProductProps) => (
-                        <Grid item xs={12} sm={6} md={4}>
+                    }, i) => (
+                        <Grid item xs={12} sm={6} md={4} key={i}>
                             <ProductsListItem
                                 title={title}
                                 description={description}
