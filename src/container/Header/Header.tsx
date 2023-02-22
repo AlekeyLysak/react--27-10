@@ -33,7 +33,7 @@ const Header = ({ cartData }: Props) => {
                     <Logo/>
                     <Menu/>
                     <CartHeader cartData={cartData}/>
-                </Toolbar>
+                  </Toolbar>
             </Container>
         </AppBar>
     )
