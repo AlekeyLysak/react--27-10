@@ -1,15 +1,24 @@
+import productsArray, { getProductsObject, Product } from 'utils/productsArray'
+
 type Props = {
-    ProductsInCart: {
+    productsInCart: {
         [id: number]: number
+    }
+    productsObject?: {
+        [id: number]: Product
     }
 }
 
-const CartHeader = ({ ProductsInCart }: Props) => {
+const CartHeader = ({
+    productsInCart,
+    productsObject = getProductsObject(productsArray),
+}: Props) => {
     return (
         <div>
-            {Object.keys(ProductsInCart).map((productId) => (
+            {Object.keys(productsInCart).map((productId) => (
                 <div key={productId}>
-                    {productId} : {ProductsInCart[parseInt(productId)]}
+                    {productsObject[parseInt(productId)].title}
+                    {productsInCart[parseInt(productId)]}
                 </div>
             ))}
         </div>
