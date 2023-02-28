@@ -8,6 +8,7 @@ import { Route, Routes } from 'react-router-dom'
 import Home from 'pages/Home/Home'
 import { Container } from '@mui/system'
 import CartPage from 'pages/Cart/CartPage'
+import { omit } from 'lodash'
 
 type Props = {}
 
@@ -28,10 +29,7 @@ const App = (props: Props) => {
     })
 
     const addProductToCart = (id: number, count: number) => {
-        setProductsInCart((prevState) => ({
-            ...prevState,
-            [id]: (prevState[id] || 0) + count,
-        }))
+        setProductsInCart((prevState) => omit(prevState, [id]))
     }
 
     const removeProductFromCart = (id: number) => {
@@ -47,9 +45,6 @@ const App = (props: Props) => {
             <ThemeProvider theme={theme}>
                 <CssBaseline />
                 <Header productsInCart={productsInCart} />
-                <button onClick={() => removeProductFromCart(1)}>
-                    Delete product
-                </button>
                 <Container
                     sx={{
                         padding: '60px 0',
@@ -65,7 +60,10 @@ const App = (props: Props) => {
                         <Route
                             path="cart"
                             element={
-                                <CartPage productsInCart={productsInCart} />
+                                <CartPage
+                                    productsInCart={productsInCart}
+                                    removeProductFromCart={removeProductFromCart}
+                              />
                             }
                         />
                     </Routes>
