@@ -1,5 +1,4 @@
 import { Grid, Typography } from '@mui/material'
-import { unstable_createCssVarsProvider } from '@mui/system'
 import CartProductList from 'components/CartProductList/CartProductList'
 import CartProductListItemExtended from 'components/CartProductList/CartProductListItemExtended'
 import CartTotal from 'components/CartTotal/CartTotal'
