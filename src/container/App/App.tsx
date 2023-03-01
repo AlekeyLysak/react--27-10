@@ -14,7 +14,7 @@ type Props = {}
 
 const theme = createTheme({
     typography: {
-        fontFamily: 'Raleway, sans-serif',
+      fontFamily: 'Comfortaa, cursive',
     },
 })
 
@@ -29,15 +29,21 @@ const App = (props: Props) => {
     })
 
     const addProductToCart = (id: number, count: number) => {
-        setProductsInCart((prevState) => omit(prevState, [id]))
+        setProductsInCart((prevState) => ({
+            ...prevState,
+            [id]: (prevState[id] || 0) + count,
+        }))
     }
 
     const removeProductFromCart = (id: number) => {
-        setProductsInCart((prevState) => {
-            let prevProductsInCart = { ...prevState }
-            delete prevProductsInCart[id]
-            return prevProductsInCart
-        })
+        setProductsInCart((prevState) => omit(prevState, [id]))
+    }
+
+    const changeProductQuantity = (id: number, count: number) => {
+        setProductsInCart((prevState) => ({
+            ...prevState,
+            [id]: count,
+        }))
     }
 
     return (
@@ -62,8 +68,13 @@ const App = (props: Props) => {
                             element={
                                 <CartPage
                                     productsInCart={productsInCart}
-                                    removeProductFromCart={removeProductFromCart}
-                              />
+                                    removeProductFromCart={
+                                        removeProductFromCart
+                                    }
+                                    changeProductQuantity={
+                                        changeProductQuantity
+                                    }
+                                />
                             }
                         />
                     </Routes>
