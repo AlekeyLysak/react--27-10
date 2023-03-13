@@ -16,7 +16,8 @@ const CartProductListItemExtended = ({
     removeProductFromCart,
     changeProductQuantity,
 }: Props) => {
-    return (
+    
+  return (
         <Grid item xs={12} sm={4}>
             <Card>
                 <CardContent>

@@ -10,6 +10,7 @@ import { Container } from '@mui/system'
 import CartPage from 'pages/Cart/CartPage'
 import { omit } from 'lodash'
 
+
 type Props = {}
 
 const theme = createTheme({
