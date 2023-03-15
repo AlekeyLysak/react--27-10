@@ -9,21 +9,19 @@ import Home from 'pages/Home/Home'
 import { Container } from '@mui/system'
 import CartPage from 'pages/Cart/CartPage'
 import { omit } from 'lodash'
-
+import CheckoutPage from 'components/Checkout/CheckoutPage'
 
 type Props = {}
 
 const theme = createTheme({
     typography: {
-      fontFamily: 'Comfortaa, cursive',
+        fontFamily: 'Comfortaa, cursive',
     },
 })
 
 type ProductsInCart = {
     [id: number]: number
 }
-
-
 
 const App = (props: Props) => {
     const [productsInCart, setProductsInCart] = useState<ProductsInCart>({
@@ -70,7 +68,6 @@ const App = (props: Props) => {
                             path="cart"
                             element={
                                 <CartPage
-                                    productsInCart={productsInCart}
                                     removeProductFromCart={
                                         removeProductFromCart
                                     }
@@ -80,6 +77,7 @@ const App = (props: Props) => {
                                 />
                             }
                         />
+                         <Route path="checkout" element={<CheckoutPage/>}/>
                     </Routes>
                 </Container>
                 <Footer />
