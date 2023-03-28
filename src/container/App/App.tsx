@@ -3,13 +3,17 @@ import Header from 'container/Header/Header'
 import CssBaseline from '@mui/material/CssBaseline'
 import { createTheme, StyledEngineProvider } from '@mui/material/styles'
 import { ThemeProvider } from '@mui/system'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Home from 'pages/Home/Home'
 import { Container } from '@mui/system'
 import CartPage from 'pages/Cart/CartPage'
 import { omit } from 'lodash'
 import CheckoutPage from 'components/Checkout/CheckoutPage'
+import ProductPage from 'pages/Product/ProductPage'
+import { useAppDispatch } from 'redux/hooks'
+import { fetchProducts } from 'redux/productsReducer'
+import HomeWork from 'pages/HomeWork/HomeWork'
 
 type Props = {}
 
@@ -24,7 +28,14 @@ type ProductsInCart = {
 }
 
 const App = (props: Props) => {
-    const [productsInCart, setProductsInCart] = useState<ProductsInCart>({
+  const dispatch = useAppDispatch()
+
+  useEffect (() => {
+    dispatch(fetchProducts())
+  })
+    
+  
+  const [productsInCart, setProductsInCart] = useState<ProductsInCart>({
         1: 5,
         2: 5,
     })
@@ -46,6 +57,8 @@ const App = (props: Props) => {
             [id]: count,
         }))
     }
+
+    
 
     return (
         <StyledEngineProvider injectFirst>
@@ -78,6 +91,8 @@ const App = (props: Props) => {
                             }
                         />
                          <Route path="checkout" element={<CheckoutPage/>}/>
+                         <Route path="/products/:id" element={<ProductPage/>}/>
+                         <Route path="homeWork" element={<HomeWork />} />
                     </Routes>
                 </Container>
                 <Footer />

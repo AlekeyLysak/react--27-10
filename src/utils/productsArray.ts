@@ -6,19 +6,19 @@ export type Product = {
   capacity: string
   price: number
   image: string
-  category?:string
+  // category?:string
 }
 
 const productsArray: Product [] = [
   {
-    id:1,
+      id:1,
       title: 'iPhone 14 Pro',
       description:'This is iPhone 14 Pro',
       type:'phone',
       capacity:"256",
       price: 2000,
       image: './images/iphone-black.webp',
-      category: "phone",
+      // category: "phone",
   },
   {
     id:2,
@@ -37,7 +37,7 @@ const productsArray: Product [] = [
   capacity:"128",
   price: 1200,
   image: './images/iphone-green.webp',
-  category: "phone",
+  
 },
 {
   id:4,
@@ -56,7 +56,7 @@ const productsArray: Product [] = [
   capacity:"128",
   price: 800,
   image: './images/iphone-purple.webp',
-  category: "phone",
+  
 },
 {
   id:6,

@@ -7,6 +7,9 @@ type Props = {
 }
 
 const ProductsList = ({ addProductToCart }: Props) => {
+
+  
+
     return (
         <>
             <Typography
@@ -21,7 +24,7 @@ const ProductsList = ({ addProductToCart }: Props) => {
             </Typography>
             <Grid container spacing={3}>
                 {productsArray
-                    .filter((product) => product.category === 'phone')
+                    // .filter((product) => product.category === 'phone')
                     .map(
                         ({
                             id,

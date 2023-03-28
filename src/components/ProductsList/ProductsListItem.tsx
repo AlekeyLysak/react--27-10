@@ -7,6 +7,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import { useAppDispatch, useAppSelector } from 'redux/hooks'
 import { addLike, removeLike } from 'redux/likeReducer'
 import { addProductToCart } from 'redux/cartReducer'
+import { Link } from 'react-router-dom'
 
 type Props = {
     id: number
@@ -27,7 +28,7 @@ const ProductsListItem = ({
     capacity,
     price,
     image,
-  }: Props) => {
+}: Props) => {
     const [count, setCount] = useState<number>(1)
 
     const onIncrement = () => {
@@ -56,7 +57,7 @@ const ProductsListItem = ({
                 <div className="product-image">
                     <img src={image} alt="" />
                 </div>
-                <div className="product-title">{title}</div>
+                <div className="product-title"><Link to={`/products/${id}`}>{title}</Link></div>
                 <div className="product-desc">{description}</div>
                 <div className="product-features">Type: {type}</div>
                 <div className="product-features">Capacity: {capacity}GB</div>
@@ -70,10 +71,14 @@ const ProductsListItem = ({
             <CardActions className="product-btn-wrap">
                 <Button
                     variant="outlined"
-                    onClick={() => dispatch(addProductToCart({
-                      id,
-                      count,
-                    }))}
+                    onClick={() =>
+                        dispatch(
+                            addProductToCart({
+                                id,
+                                count,
+                            })
+                        )
+                    }
                 >
                     Add to cart
                 </Button>
